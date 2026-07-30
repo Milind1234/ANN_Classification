@@ -1,7 +1,9 @@
-tensorflow
+tensorflow==2.19.1
+tensorflow-metal==1.2.0
 pandas
 numpy
 scikit-learn
 tensorboard
 matplotlib
 streamlit
+ipykernel
