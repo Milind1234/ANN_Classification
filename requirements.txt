@@ -7,3 +7,5 @@ tensorboard
 matplotlib
 streamlit
 ipykernel
+seaborn
+xgboost
