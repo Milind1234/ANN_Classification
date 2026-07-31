@@ -1,0 +1,11 @@
+{
+    "learning_rate": 0.01,
+    "batch_size": 16,
+    "optimizer": "RMSprop",
+    "activation": "elu",
+    "dropout_rate": 0.4,
+    "neurons": [
+        32,
+        16
+    ]
+}
