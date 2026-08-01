@@ -21,206 +21,380 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-/* ======================================
-   Predict Button Styling
-====================================== */
+/* ==========================================================
+   HIDE STREAMLIT DEFAULT UI
+========================================================== */
 
-.stButton > button {
-
-    background-color: #0A3D62 !important;
-
-    color: white !important;
-
-    border-radius: 10px;
-
-    border: none;
-
-    font-size: 18px;
-
-    font-weight: bold;
-
-    padding: 12px;
-
-    transition: all 0.3s ease;
-
+#MainMenu {
+    visibility: hidden;
 }
 
-.stButton > button:hover {
-
-    background-color: #145DA0 !important;
-
-    color: white !important;
-
-    border: none !important;
-
+footer {
+    visibility: hidden;
 }
 
-.stButton > button:focus {
-
-    background-color: #145DA0 !important;
-
-    color: white !important;
-
-    border: none !important;
-
+header {
+    visibility: hidden;
 }
 
-/* Hide Streamlit Menu */
-#MainMenu{
-visibility:hidden;
+/* ==========================================================
+   APP BACKGROUND
+========================================================== */
+
+.stApp {
+    background: #F4F7FC;
 }
 
-footer{
-visibility:hidden;
-}
+/* ==========================================================
+   TITLES
+========================================================== */
 
-header{
-visibility:hidden;
-}
+.title {
 
-/* Main Background */
+    font-size:42px;
 
-.stApp{
-background-color:#F4F7FC;
-}
+    font-weight:700;
 
-/* Title */
+    color:#0A3D62;
 
-.title{
-
-font-size:42px;
-
-font-weight:bold;
-
-color:#0A3D62;
-
-text-align:center;
+    text-align:center;
 
 }
-
-/* Subtitle */
 
 .subtitle{
 
-text-align:center;
+    text-align:center;
 
-font-size:18px;
+    font-size:18px;
 
-color:gray;
+    color:#5A6B7B;
 
-margin-bottom:30px;
+    margin-bottom:30px;
 
 }
 
-/* Cards */
+/* ==========================================================
+   CARD
+========================================================== */
 
 .card{
 
-background:white;
+    background:white;
 
-padding:25px;
+    padding:25px;
 
-border-radius:15px;
+    border-radius:18px;
 
-box-shadow:0px 5px 15px rgba(0,0,0,0.15);
+    box-shadow:0px 6px 18px rgba(0,0,0,0.12);
 
-margin-bottom:20px;
-
-}
-
-/* Metric Card */
-
-.metric{
-
-background:#0A3D62;
-
-padding:15px;
-
-border-radius:10px;
-
-color:white;
-
-text-align:center;
-
-margin-bottom:10px;
+    margin-bottom:20px;
 
 }
 
-/* Prediction */
+/* ==========================================================
+   SIDEBAR
+========================================================== */
 
-.success{
+[data-testid="stSidebar"]{
 
-background:#D4EDDA;
-
-padding:15px;
-
-border-radius:10px;
-
-color:#155724;
-
-font-weight:bold;
+    background:#1E293B;
 
 }
 
-.danger{
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3{
 
-background:#F8D7DA;
-
-padding:15px;
-
-border-radius:10px;
-
-color:#721C24;
-
-font-weight:bold;
+    color:white;
 
 }
 
-.warning{
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] label{
 
-background:#FFF3CD;
-
-padding:15px;
-
-border-radius:10px;
-
-color:#856404;
-
-font-weight:bold;
-
-}
-/* ============================================
-   Fix Streamlit Labels
-============================================ */
-
-label {
-
-    color: #1E293B !important;
-
-    font-weight: 600 !important;
+    color:white;
 
 }
 
-.stSelectbox label,
-.stNumberInput label,
+/* ==========================================================
+   BUTTON
+========================================================== */
+
+.stButton > button{
+
+    background:#0A3D62;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+    height:55px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    transition:0.3s;
+
+}
+
+.stButton > button:hover{
+
+    background:#145DA0;
+
+    color:white;
+
+}
+
+.stButton > button:focus{
+
+    background:#145DA0;
+
+    color:white;
+
+}
+
+/* ==========================================================
+   LABELS
+========================================================== */
+
+label{
+
+    color:#1E293B !important;
+
+    font-weight:600;
+
+}
+
 .stSlider label,
-.stRadio label {
+.stRadio label,
+.stSelectbox label,
+.stNumberInput label{
 
-    color: #1E293B !important;
+    color:#1E293B !important;
 
-    opacity: 1 !important;
+    font-weight:600;
 
-    font-weight: 600 !important;
+}
+
+/* ==========================================================
+   INPUT BOXES
+========================================================== */
+
+input{
+
+    color:#1E293B !important;
 
 }
 
-/* Markdown headings */
+textarea{
 
-h1, h2, h3, h4 {
-
-    color: #0A3D62 !important;
+    color:#1E293B !important;
 
 }
+
+/* ==========================================================
+   SELECTBOX
+========================================================== */
+
+[data-baseweb="select"]{
+
+    color:#1E293B;
+
+}
+
+/* ==========================================================
+   METRICS
+========================================================== */
+
+[data-testid="stMetric"]{
+
+    background:white;
+
+    border-radius:12px;
+
+    padding:20px;
+
+    box-shadow:0px 5px 12px rgba(0,0,0,0.08);
+
+}
+
+[data-testid="stMetricLabel"]{
+
+    color:#1E293B !important;
+
+    font-size:15px;
+
+}
+
+[data-testid="stMetricValue"]{
+
+    color:#0A3D62 !important;
+
+    font-size:34px;
+
+    font-weight:700;
+
+}
+
+/* ==========================================================
+   DATAFRAME
+========================================================== */
+
+[data-testid="stDataFrame"]{
+
+    border-radius:12px;
+
+}
+
+/* ==========================================================
+   EXPANDER
+========================================================== */
+
+.streamlit-expanderHeader{
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    color:#0A3D62;
+
+}
+
+/* ==========================================================
+   SUCCESS
+========================================================== */
+
+[data-testid="stAlert"]{
+
+    border-radius:12px;
+
+}
+
+/* ==========================================================
+   PROGRESS BAR
+========================================================== */
+
+.stProgress > div > div{
+
+    background:#0A3D62;
+
+}
+
+/* ==========================================================
+   DOWNLOAD BUTTON
+========================================================== */
+
+.stDownloadButton > button{
+
+    background:#0A3D62;
+
+    color:white;
+
+    border-radius:10px;
+
+    border:none;
+
+}
+
+.stDownloadButton > button:hover{
+
+    background:#145DA0;
+
+    color:white;
+
+}
+
+/* ==========================================================
+   HEADINGS
+========================================================== */
+
+h1{
+
+    color:#0A3D62;
+
+}
+
+h2{
+
+    color:#0A3D62;
+
+}
+
+h3{
+
+    color:#0A3D62;
+
+}
+
+h4{
+
+    color:#0A3D62;
+
+}
+
+/* ==========================================================
+   TABLE
+========================================================== */
+
+table{
+
+    color:#1E293B;
+
+}
+
+/* ==========================================================
+   RADIO / TOGGLE
+========================================================== */
+
+[data-testid="stRadio"]{
+
+    color:#1E293B;
+
+}
+
+[data-testid="stToggle"]{
+
+    color:#1E293B;
+
+}
+
+/* ==========================================================
+   MARKDOWN
+========================================================== */
+
+p{
+
+    color:#1E293B;
+
+}
+
+li{
+
+    color:#1E293B;
+
+}
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+.footer{
+
+    text-align:center;
+
+    color:#0A3D62;
+
+    font-size:16px;
+
+    margin-top:40px;
+
+    margin-bottom:20px;
+
+}
+
 </style>
 """,
 unsafe_allow_html=True)
@@ -723,7 +897,7 @@ if predict_button:
                     use_container_width=True
                 )
 
-                            # ==========================================================
+            # ==========================================================
             # Probability Interpretation
             # ==========================================================
 
@@ -859,20 +1033,19 @@ The customer is highly likely to churn.
 
             st.markdown("---")
 
-            st.markdown(
-            """
-            <center>
+            st.markdown("""
+            <div class="footer">
+            
+            <h2>🏦 Customer Churn Prediction Dashboard</h2>
 
-            ### 🏦 Customer Churn Prediction Dashboard
+            <p><b>Developed by Milind Chavan</b></p>
 
-            Developed by **Milind Chavan**
-
+            <p>
             Artificial Neural Network • TensorFlow • Keras • Streamlit
+            </p>
 
-            </center>
-            """,
-            unsafe_allow_html=True
-            )
+            </div>
+            """, unsafe_allow_html=True)
 
         except Exception as e:
 
