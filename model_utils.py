@@ -9,7 +9,7 @@ Loads:
 3. Label Encoder
 4. One-Hot Encoder
 
-Author  : Milind Chavan
+DEVELOPER  : Milind Chavan
 Project : Customer Churn Analytics Dashboard
 """
 
@@ -18,6 +18,8 @@ import pickle
 
 import streamlit as st
 import tensorflow as tf
+
+tf.config.set_visible_devices([], "GPU")
 
 from config import (
     MODEL_PATH,
@@ -63,7 +65,6 @@ def validate_artifacts() -> None:
 # Load ANN Model
 # ==========================================================
 
-@st.cache_resource(show_spinner=False)
 def load_model():
     """
     Load the trained ANN model.
@@ -76,14 +77,17 @@ def load_model():
 
     validate_artifacts()
 
-    return tf.keras.models.load_model(MODEL_PATH)
+    model = tf.keras.models.load_model(MODEL_PATH)
+
+    print("Model Loaded Successfully")
+    
+    return model
 
 
 # ==========================================================
 # Load Preprocessing Objects
 # ==========================================================
 
-@st.cache_resource(show_spinner=False)
 def load_preprocessing():
     """
     Load preprocessing artifacts.
@@ -120,7 +124,6 @@ def load_preprocessing():
 # Load Everything
 # ==========================================================
 
-@st.cache_resource(show_spinner=False)
 def load_artifacts():
     """
     Load all model artifacts.

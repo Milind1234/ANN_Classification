@@ -17,7 +17,7 @@ from config import (
     MODEL_NAME,
     MODEL_VERSION,
     FRAMEWORK,
-    AUTHOR,
+    DEVELOPER,
     ACCURACY,
     PRECISION,
     RECALL,
@@ -40,15 +40,18 @@ st.set_page_config(
 # Load CSS
 # ==========================================================
 
-try:
-    with open("style.css") as css:
+from pathlib import Path
+
+css_path = Path(__file__).parent / "style.css"
+
+if css_path.exists():
+
+    with open(css_path, encoding="utf-8") as css:
+
         st.markdown(
             f"<style>{css.read()}</style>",
-            unsafe_allow_html=True
+            unsafe_allow_html=True,
         )
-except FileNotFoundError:
-    pass
-
 # ==========================================================
 # Header
 # ==========================================================
@@ -137,6 +140,8 @@ with info_col1:
 
     st.info(
         f"""
+### 🤖 Model Details
+
 **Model Name**
 
 {MODEL_NAME}
@@ -151,18 +156,19 @@ with info_col2:
 
     st.info(
         f"""
+### ⚙️ Technical Information
+
 **Framework**
 
 {FRAMEWORK}
 
 **Developer**
 
-{AUTHOR}
+{DEVELOPER}
 """
     )
 
 st.divider()
-
 # ==========================================================
 # Navigation
 # ==========================================================
